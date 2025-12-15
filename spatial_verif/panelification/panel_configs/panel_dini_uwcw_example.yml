@@ -1,0 +1,55 @@
+#######################################
+### DEFINE MODELS, DATE, LEAD_TIMES ###
+#######################################
+ 
+### Those parameters are here case study dependent due to the availability of data ### 
+verify_case:
+        prec_verif:
+                def_param: tp
+                init_time: 2025022000
+                lead_time: 24
+        prec_verif_period:
+                def_param: tp
+                fcst_by: 12h
+                lead_time: 
+                - 24
+                - 36
+                find_cases: TRUE
+                obs_by: 3h
+                cases_thr: 5
+                cases_perc: .95
+                cases_ltmax: 60
+                cases_ltmin: 12
+                cases_cyc:
+                - 00
+                - 12
+models:
+        - diniepsmbr000
+        - dinieps_spmbr000
+        - IFSHRES
+        
+#########################################
+### Define which config files to use: ###
+#########################################
+
+### READING of the models/obs
+diniepsmbr000:
+        tp:
+                definition_file: "definitions_tp_dini_uwcw_example.R"
+dinieps_spmbr000:
+        tp:
+                definition_file: "definitions_tp_dini_uwcw_example.R"
+IFSHRES:
+        tp:
+                definition_file: "definitions_tp_dini_uwcw_example.R"
+
+### PLOTTING of the fields
+plt_config:
+        tp: "definitions_tp_plotting.R"
+
+########################
+### Additional Plots ###
+########################
+save_additional_plt: 
+        FSS: FALSE
+        fields: FALSE
